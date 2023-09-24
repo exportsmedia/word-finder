@@ -80,8 +80,6 @@ document.addEventListener('alpine:init', () => {
 
             this.guess = this.letterOne + this.letterTwo + this.letterThree + this.letterFour;
 
-            console.log(this.guess)
-
             if (this.answers.includes(this.guess)) {
                 this.updateToast('You have already found that word');
                 return;
