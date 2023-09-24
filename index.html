@@ -254,8 +254,11 @@
 
                 <div class="mt-4">
 
-                  <template x-for="(words, index) in yesterdayValidWords" :key="index">
-                      <span class="uppercase text-2xl px-2 dark:text-white inline-block rounded m-1 border-slate-400 border-[1.5px] border-stroke" x-text="words"></span>
+                  <template x-for="(word, index) in yesterdayValidWords" :key="index">
+                      <div class="mt-4">
+                        <span class="uppercase text-2xl px-2 dark:text-white inline-block rounded m-1 border-slate-400 border-[1.5px] border-stroke" x-text="word"></span>
+                        <p class="text-xl px-2 dark:text-white" x-text="definitions[word]"></p>
+                      </div>
                   </template>
     
                 </div>
