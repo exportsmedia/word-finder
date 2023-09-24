@@ -109,6 +109,12 @@ document.addEventListener('alpine:init', () => {
             this.updateStats()
             this.parseStats()
         },
+        buttonDisabled(key) {
+            if (!this.todaysLetters.includes(key)) {
+                return true;
+            }
+            return false;
+        },
         deleteLetter() {
             if(this.letterFour.length > 0) {
                 this.letterFour = '';
