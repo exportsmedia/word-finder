@@ -2,5 +2,5 @@
     "title":"Word Finder",
     "description":"Guess as many 4 letter words as you can from the provided letters.",
     "keywords":"game",
-    "intro": "Find all the 4 letter words that can be made out of these letters. Letters may be used more than once."
+    "intro": "Find the 4 letter words contained in the 9 letters. Letters may be used more than once."
 }
