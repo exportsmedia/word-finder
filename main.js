@@ -34,36 +34,53 @@ document.addEventListener('alpine:init', () => {
         toastText: '',
         date: new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" }),
         checkLetter(e) {
-
             var letter = e.key.toLowerCase();
+            this.checkKey(letter);
+        },
+        checkKey(letter) {
+            this.toastText = '';
+            this.gameStarted = true;
 
             if(letter == 'backspace') {
                 this.toastText = '';
                 this.deleteLetter();
             }
 
-            if (!this.todaysLetters.includes(letter)) {
-                return;
-            }
-            this.gameStarted = true;
+            if(letter == 'enter') {
 
-            if(this.letterOne.length == 0) {
-                this.letterOne = letter;
-                return;
-            }
-            if(this.letterTwo.length == 0) {
-                this.letterTwo = letter;
-                return;
-            }
-            if(this.letterThree.length == 0) {
-                this.letterThree = letter;
-                return;
-            }
-            if(this.letterFour.length == 0) {
-                this.letterFour = letter;
+                if(this.letterFour.length == 0) {
+                    this.updateToast('Please enter 4 letters');
+                    return;
+                }
+
+            } else {
+
+                if (!this.todaysLetters.includes(letter)) {
+                    return;
+                }
+    
+                if(this.letterOne.length == 0) {
+                    this.letterOne = letter;
+                    return;
+                }
+                if(this.letterTwo.length == 0) {
+                    this.letterTwo = letter;
+                    return;
+                }
+                if(this.letterThree.length == 0) {
+                    this.letterThree = letter;
+                    return;
+                }
+                if(this.letterFour.length == 0) {
+                    this.letterFour = letter;
+                    return;
+                }
+
             }
 
             this.guess = this.letterOne + this.letterTwo + this.letterThree + this.letterFour;
+
+            console.log(this.guess)
 
             if (this.answers.includes(this.guess)) {
                 this.updateToast('You have already found that word');
@@ -115,6 +132,14 @@ document.addEventListener('alpine:init', () => {
         updateToast(text) {
             this.showToast = true;
             this.toastText = text;
+            var count = 1;
+            var t = window.setInterval(() => {
+                count++;
+                if (count == 5 && this.gameStarted) {
+                    this.toastText = '';
+                    clearInterval(t);
+                }
+            }, 1000);
         },
         updateStats() {
             if(this.lastGame != this.day) {
@@ -122,7 +147,6 @@ document.addEventListener('alpine:init', () => {
                 localStorage.setItem('gameOver', false)
                 this.gameOver = false;
                 this.showStats = false;
-                this.guessNumber = 0;
                 this.stats.played = this.stats.played + 1;
                 this.currentStreak = this.currentStreak + 1;
                 if(this.currentStreak > this.maxStreak) {
@@ -144,6 +168,7 @@ document.addEventListener('alpine:init', () => {
             this.todaysLetters = Array.from(this.todaysString);
             this.validWords = getValidWords(this.todaysString);
             this.solutionCount = this.validWords.length;
+            this.updateToast('Start typing to play...');
         },
         parseStats() {
             if(Object.keys(this.stats).length) {

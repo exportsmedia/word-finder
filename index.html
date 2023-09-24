@@ -47,19 +47,19 @@
         
         <article>
 
-            <h2 class="text-2xl dark:text-white" x-text="configIntro"></h2>
+            <h2 class="text-md sm:text-2xl dark:text-white" x-text="configIntro"></h2>
 
-            <div id="todaysLetters" class="max-w-xs mt-4 m-auto grid grid-cols-3 gap-3">
+            <div id="todaysLetters" class="sm:max-w-xs max-w-xxs mt-4 m-auto grid grid-cols-3 gap-3">
 
               <template x-for="(letter, index) in todaysLetters" :key="index">
                   <div class="aspect-w-1 aspect-h-1 border-slate-400 border-[1.5px] border-stroke flex items-center justify-center text-center">
-                    <p class="uppercase align-middle text-7xl pt-2 dark:text-white" x-text="letter"></p>
+                    <p class="uppercase align-middle text-md sm:text-7xl pt-2 dark:text-white" x-text="letter"></p>
                   </div>
               </template>
 
             </div>
 
-            <div id="guesses" class="mt-9 m-auto grid grid-cols-4 gap-3">
+            <div id="guesses" class="mt-2 sm:mt-9 m-auto grid grid-cols-4 gap-3">
               <div class="aspect-w-1 aspect-h-1 transition duration-150 ease-in-out bg-gray-200 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-center text-center">
                 <p class="uppercase align-middle text-8xl pt-3 dark:text-white" x-text="letterOne"></p>
               </div>
@@ -74,8 +74,53 @@
               </div>
             </div>
 
-            <p x-show="!gameStarted" class="text-center dark:text-white">Start typing to play...</p>
-            <p x-show="showToast" class="text-center dark:text-white" x-text="toastText"></p>
+            <p class="text-center dark:text-white min-h-[25px]" x-text="toastText"></p>
+
+            <div id="keyboard">
+
+              <div class="mt-2 m-auto text-center flex">
+                  <button type="button" @click="checkKey('q')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">q</button>
+                  <button type="button" @click="checkKey('w')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">w</button>
+                  <button type="button" @click="checkKey('e')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">e</button>
+                  <button type="button" @click="checkKey('r')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">r</button>
+                  <button type="button" @click="checkKey('t')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">t</button>
+                  <button type="button" @click="checkKey('y')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">y</button>
+                  <button type="button" @click="checkKey('u')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">u</button>
+                  <button type="button" @click="checkKey('i')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">i</button>
+                  <button type="button" @click="checkKey('o')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">o</button>
+                  <button type="button" @click="checkKey('p')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">p</button>
+              </div>
+
+              <div class="mt-2 m-auto text-center flex">
+                <div class="flex-1/2"></div>
+                <button type="button" @click="checkKey('a')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">a</button>
+                <button type="button" @click="checkKey('s')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">s</button>
+                <button type="button" @click="checkKey('d')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">d</button>
+                <button type="button" @click="checkKey('f')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">f</button>
+                <button type="button" @click="checkKey('g')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">g</button>
+                <button type="button" @click="checkKey('h')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">h</button>
+                <button type="button" @click="checkKey('j')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">j</button>
+                <button type="button" @click="checkKey('k')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">k</button>
+                <button type="button" @click="checkKey('l')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">l</button>
+                <div class="flex-1/2"></div>
+              </div>
+
+              <div class="mt-2 m-auto text-center flex">
+                <button type="button" @click="checkKey('enter')" class="flex-1-1/2 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">Enter</button>
+                <button type="button" @click="checkKey('z')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">z</button>
+                <button type="button" @click="checkKey('x')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">x</button>
+                <button type="button" @click="checkKey('c')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">c</button>
+                <button type="button" @click="checkKey('v')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">v</button>
+                <button type="button" @click="checkKey('b')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">b</button>
+                <button type="button" @click="checkKey('n')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">n</button>
+                <button type="button" @click="checkKey('m')" class="flex-1 mx-1 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">m</button>
+                <button type="button" @click="checkKey('backspace')" class="flex-1-1/2 h-12 transition duration-150 ease-in-out bg-gray-200 rounded-md focus:outline-none text-center dark:bg-gray-700 dark:text-white">
+                  <svg class="w-6 inline-block dark:fill-white fill-slate-950" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>backspace</title><path d="M19,15.59L17.59,17L14,13.41L10.41,17L9,15.59L12.59,12L9,8.41L10.41,7L14,10.59L17.59,7L19,8.41L15.41,12L19,15.59M22,3A2,2 0 0,1 24,5V19A2,2 0 0,1 22,21H7C6.31,21 5.77,20.64 5.41,20.11L0,12L5.41,3.88C5.77,3.35 6.31,3 7,3H22M22,5H7L2.28,12L7,19H22V5Z" /></svg>
+                </button>
+              </div>
+
+            </div>
+
 
             <div class="mt-5">
               <p class="text-2xl dark:text-white">Found Words: <span x-text="answers.length"></span> of <span x-text="solutionCount"></span></p>
