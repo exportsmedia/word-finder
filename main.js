@@ -220,6 +220,7 @@ document.addEventListener('alpine:init', () => {
         },
         share() {
             this.clipboardCopy = true;
+            this.gameStarted = true;
             let share = this.config.title + ' #' + this.day + ' ' + "\n\n";
 
             share += "Found " + this.answers.length + " out of " + this.validWords.length + "\n\n";
@@ -236,7 +237,14 @@ document.addEventListener('alpine:init', () => {
                 chart[step] = '🟩';
             }
 
-            share += chart.join('') + ' ' + percent + "%\n\n" + document.URL;
+            var count = 1;
+            var c = window.setInterval(() => {
+                count++;
+                if (count == 4 && this.gameStarted) {
+                    this.clipboardCopy = false;
+                    clearInterval(c);
+                }
+            }, 1000);
 
             navigator.clipboard.writeText(share).then(
                 () => {
