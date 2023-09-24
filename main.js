@@ -75,6 +75,9 @@ document.addEventListener('alpine:init', () => {
                     this.letterFour = letter;
                     return;
                 }
+                if(this.letterFour.length > 0) {
+                    return;
+                }
 
             }
 
