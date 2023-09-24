@@ -19,6 +19,8 @@ document.addEventListener('alpine:init', () => {
         todaysString: '',
         todaysLetters: [],
         validWords: [],
+        yesterdayValidWords: [],
+        yesterdaysString: '',
         letterOne: '',
         letterTwo: '',
         letterThree: '',
@@ -31,6 +33,7 @@ document.addEventListener('alpine:init', () => {
         clipboardCopy: false,
         timer: '',
         showHelp: false,
+        showPreviousAnswers: false,
         toastText: '',
         date: new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" }),
         checkLetter(e) {
@@ -175,6 +178,8 @@ document.addEventListener('alpine:init', () => {
             this.todaysLetters = Array.from(this.todaysString);
             this.validWords = getValidWords(this.todaysString);
             this.solutionCount = this.validWords.length;
+            this.yesterdaysString = getString(day - 1);
+            this.yesterdayValidWords = getValidWords(this.yesterdaysString);
             this.updateToast('Start typing to play...');
         },
         parseStats() {
