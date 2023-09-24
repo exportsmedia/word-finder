@@ -216,12 +216,11 @@ document.addEventListener('alpine:init', () => {
             );
         },
         countdownTimer() {
-            const today = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
+            const today = new Date()
             const tomorrow = new Date(today)
             tomorrow.setDate(tomorrow.getDate() + 1)
             tomorrow.setHours(0,0,0,0);
             const countDownDate = tomorrow.getTime();
-
             // Update the count down every 1 second
             var x = window.setInterval(() => {
                 var now = new Date().getTime();
@@ -244,7 +243,7 @@ document.addEventListener('alpine:init', () => {
                 this.timer = hourPad + "" + hours + ":" + minutePad + "" + minutes + ":" + secondPad + "" + seconds;
                 if (distance < 0) {
                     clearInterval(x);
-                    //location.reload();
+                    location.reload();
                 }
             }, 1000);
         }
