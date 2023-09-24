@@ -144,10 +144,6 @@ document.addEventListener('alpine:init', () => {
             this.todaysLetters = Array.from(this.todaysString);
             this.validWords = getValidWords(this.todaysString);
             this.solutionCount = this.validWords.length;
-
-            console.log(this.todaysString)
-            console.log(this.todaysLetters)
-            console.log(this.validWords)
         },
         parseStats() {
             if(Object.keys(this.stats).length) {
