@@ -248,8 +248,6 @@ document.addEventListener('alpine:init', () => {
 
             share += chart.join('') + ' ' + percent + "%\n\n" + document.URL;
 
-            console.log(share)
-
             var count = 1;
             var c = window.setInterval(() => {
                 count++;
