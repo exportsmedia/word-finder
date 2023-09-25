@@ -94,6 +94,7 @@ document.addEventListener('alpine:init', () => {
 
             if (this.validWords.includes(this.guess)) {
                 this.answers.push(this.guess);
+                this.answers.sort();
                 localStorage.setItem('answers', JSON.stringify(this.answers))
 
                 if(this.answers.length == this.validWords.length) {
@@ -177,10 +178,10 @@ document.addEventListener('alpine:init', () => {
             this.countdownTimer();
             this.todaysString = getString(day);
             this.todaysLetters = Array.from(this.todaysString);
-            this.validWords = getValidWords(this.todaysString);
+            this.validWords = getValidWords(this.todaysString).sort();
             this.solutionCount = this.validWords.length;
             this.yesterdaysString = getString(day - 1);
-            this.yesterdayValidWords = getValidWords(this.yesterdaysString);
+            this.yesterdayValidWords = getValidWords(this.yesterdaysString).sort();
             this.updateToast('Start typing to play...');
         },
         parseStats() {
@@ -225,7 +226,6 @@ document.addEventListener('alpine:init', () => {
             this.updateStats()
             let response_definitions = await fetch('definitions.json')
             this.definitions = await response_definitions.json()
-            console.log(this.definitions)
         },
         share() {
             this.clipboardCopy = true;
@@ -245,6 +245,10 @@ document.addEventListener('alpine:init', () => {
             for (let step = 0; step < nearest; step++) {
                 chart[step] = '🟩';
             }
+
+            share += chart.join('') + ' ' + percent + "%\n\n" + document.URL;
+
+            console.log(share)
 
             var count = 1;
             var c = window.setInterval(() => {
