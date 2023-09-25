@@ -8,7 +8,8 @@ module.exports = {
         '1-1/2': '1.5 1 0%'
       },
       maxWidth: {
-        'xxs': '10rem'
+        'xxxs': '10rem',
+        'xxs': '15rem'
       }
     },
   },

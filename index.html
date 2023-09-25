@@ -53,35 +53,35 @@
 
             <h2 class="text-md sm:text-2xl dark:text-white" x-text="configIntro"></h2>
 
-            <div id="todaysLetters" class="sm:max-w-xs max-w-xxs mt-4 m-auto grid grid-cols-3 gap-3">
+            <div id="todaysLetters" class="sm:max-w-xxs max-w-xxxs mt-4 m-auto grid grid-cols-3 gap-3">
 
               <template x-for="(letter, index) in todaysLetters" :key="index">
                   <div class="aspect-w-1 aspect-h-1 border-slate-400 border-[1.5px] border-stroke flex items-center justify-center text-center">
-                    <p class="uppercase align-middle text-md sm:text-7xl pt-2 dark:text-white" x-text="letter"></p>
+                    <p class="uppercase align-middle text-md sm:text-5xl pt-2 dark:text-white" x-text="letter"></p>
                   </div>
               </template>
 
             </div>
 
-            <div id="guesses" class="w-3/4 sm:w-full mt-2 sm:mt-9 m-auto grid grid-cols-4 gap-3">
+            <div id="guesses" class="max-w-xs w-3/4 sm:w-full mt-2 sm:mt-9 m-auto grid grid-cols-4 gap-3">
               <div class="aspect-w-1 aspect-h-1 transition duration-150 ease-in-out bg-gray-200 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-center text-center">
                 <div class="flex items-center">
-                  <p class="uppercase align-middle text-3xl sm:text-8xl m-auto dark:text-white" x-text="letterOne"></p>
+                  <p class="uppercase align-middle text-3xl sm:text-5xl m-auto dark:text-white" x-text="letterOne"></p>
                 </div>
               </div>
               <div class="aspect-w-1 aspect-h-1 transition duration-150 ease-in-out bg-gray-200 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-center text-center">
                 <div class="flex items-center">
-                  <p class="uppercase align-middle text-3xl sm:text-8xl m-auto dark:text-white" x-text="letterTwo"></p>
+                  <p class="uppercase align-middle text-3xl sm:text-5xl m-auto dark:text-white" x-text="letterTwo"></p>
                 </div>
               </div>
               <div class="aspect-w-1 aspect-h-1 transition duration-150 ease-in-out bg-gray-200 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-center text-center">
                 <div class="flex items-center">
-                  <p class="uppercase align-middle text-3xl sm:text-8xl m-auto dark:text-white" x-text="letterThree"></p>
+                  <p class="uppercase align-middle text-3xl sm:text-5xl m-auto dark:text-white" x-text="letterThree"></p>
                 </div>
               </div>
               <div class="aspect-w-1 aspect-h-1 transition duration-150 ease-in-out bg-gray-200 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center justify-center text-center">
                 <div class="flex items-center">
-                  <p class="uppercase align-middle text-3xl sm:text-8xl m-auto dark:text-white" x-text="letterFour"></p>
+                  <p class="uppercase align-middle text-3xl sm:text-5xl m-auto dark:text-white" x-text="letterFour"></p>
                 </div>
               </div>
             </div>

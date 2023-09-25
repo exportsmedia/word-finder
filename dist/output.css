@@ -713,8 +713,16 @@ video {
   max-width: 42rem;
 }
 
-.max-w-xxs {
+.max-w-xxxs {
   max-width: 10rem;
+}
+
+.max-w-xxs {
+  max-width: 15rem;
+}
+
+.max-w-xs {
+  max-width: 20rem;
 }
 
 .flex-1 {
@@ -1130,8 +1138,8 @@ video {
     width: 100%;
   }
 
-  .sm\:max-w-xs {
-    max-width: 20rem;
+  .sm\:max-w-xxs {
+    max-width: 15rem;
   }
 
   .sm\:grid-cols-2 {
@@ -1161,6 +1169,11 @@ video {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .sm\:leading-5 {
